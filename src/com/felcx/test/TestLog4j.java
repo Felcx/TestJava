@@ -1,17 +1,29 @@
 package com.felcx.test;
 
-import org.apache.log4j.Logger;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.felcx.interfaces.IBaseExcute;
 
 public class TestLog4j implements IBaseExcute{
-	private static Logger logger=Logger.getLogger(TestLog4j.class);
+	private static final Logger logger=LogManager.getLogger(TestLog4j.class);
 
 	@Override
 	public void excuter() {
-		// TODO Auto-generated method stub
-		logger.debug("it a debug message");
-    	logger.warn("it is a warnning message");
-    	logger.error("it is a error message");
+		 logger.trace("Entering application.");
+	        Bar bar = new Bar();
+	        if (!bar.doIt()) {
+	            logger.error("Didn't do it.");
+	        }
+	        logger.trace("Exiting application.");
 	}
 }
+class Bar {
+	  static final Logger logger = LogManager.getLogger(Bar.class.getName());
+	 
+	  public boolean doIt() {
+	    logger.entry();
+	    logger.error("Did it again!");
+	    return logger.exit(false);
+	  }
+	}

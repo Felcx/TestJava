@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import org.apache.log4j.Logger;
+
 
 import com.felcx.util.FelcxFactory;
 import com.felcx.util.MethodFactory;
